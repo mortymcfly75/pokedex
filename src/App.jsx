@@ -21,8 +21,11 @@ import PokemonCard from ".//component.1/PokemonCard"
       imgSrc:
         "https://www.pokepedia.fr/images/thumb/c/cc/Carapuce-RFVF.png/800px-Carapuce-RFVF.png",
     },
-
-    
+    {
+      name: "pikachu",
+      imgSrc:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+    },
     {
       name:"mew",
       
@@ -30,14 +33,19 @@ import PokemonCard from ".//component.1/PokemonCard"
   ];
 
   function App (){
-  return (
+    const [pokemonIndex,setPokemonIndex] = useState(0)
+    const nextPokemon=() => {setPokemonIndex(pokemonIndex+1)}
+    const prevPokemon=() => {  setPokemonIndex(pokemonIndex-1)}
+    return (
+
 
     <div>
 
       <PokemonCard
       
-      pokemon = {pokemonList[3]}/>
-
+      pokemon = {pokemonList[pokemonIndex]}/>
+      {(pokemonIndex>0) && <button onClick={prevPokemon}>précédent</button>}
+      {(pokemonIndex<pokemonList.length - 1) && <button onClick={nextPokemon}>suivant</button>}
     </div>
     
   )
